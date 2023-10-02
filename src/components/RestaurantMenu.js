@@ -46,21 +46,19 @@ const RestaurantMenu = () => {
             <ShimmerUi />
             :
             <div className='resInfoCon'>
-                <h2>{name}</h2>
-                <h5 style={{ marginTop: "0", marginBottom: "0px" }}>{cuisines.join(", ")}</h5>
-                <p style={{ marginTop: "5px", marginBottom: "10px" }}>{costForTwoMessage}</p>
+                <h2 style={{fontSize:'1.43rem',fontWeight:'600',marginBottom:'8px',textTransform:'capitalize'}}>{name}</h2>
+                <h5 style={{ marginTop: "0", marginBottom: "0px",fontSize:'small' }}>{cuisines.join(", ")}</h5>
+                <p style={{ marginTop: "5px", marginBottom: "10px" ,fontSize:'small'}}>{costForTwoMessage}</p>
                 <hr style={{ borderTop: "1px dashed" }} />
-                <h3>Menu</h3>
-                <hr />
-                <p>
+                <h3 style={{paddingTop:'10px',paddingBottom:'20px',fontSize:'1.4rem',fontWeight:'600'}}>Menu</h3>
+                <p style={{marginTop:'20px'}}>
                     <ul style={{ listStyleType: 'none', padding: '0' }}>
-                        <li>ab</li>
                         {categories && categories.length ?
                             categories.map((val, i) => {
                                 return <>
-                                    <Accordion key={i}>
+                                    <Accordion key={i} >
                                         <AccordionSummary id={'panel' + (i + 1)} expandIcon={<ExpandMoreIcon />}>
-                                            <Typography>{val?.card?.card?.title || ""}</Typography>
+                                            <Typography variant='h6'>{val?.card?.card?.title || ""}</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             <Box>
@@ -69,7 +67,7 @@ const RestaurantMenu = () => {
                                                         {val?.card?.card?.itemCards ?
                                                             val?.card?.card?.itemCards.map((v, i) => {
                                                                 console.log("V-->", v)
-                                                                return <li key={i} style={{ border: '1px solid', padding: '20px', minHeight: '150px' }}>
+                                                                return <li key={i} style={{  borderBottom: "2px solid", padding: '20px', minHeight: '150px' }}>
                                                                    <ResMenuItem v={v} />
                                                                    
                                                                 </li>
@@ -82,19 +80,11 @@ const RestaurantMenu = () => {
                                             </Box>
                                         </AccordionDetails>
                                     </Accordion>
+                                    <div style={{ borderBottom: "10px solid #f1f1f6", width: '50px',width:'100%' }}></div>
                                 </>
                             })
                             : ''}
-                        <Accordion>
-                            <AccordionSummary id='panel1' expandIcon={<ExpandMoreIcon />}>
-                                <Typography>Acc1</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    TEXT............ Text.....
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
+                        
                     </ul>
                 </p>
             </div>
