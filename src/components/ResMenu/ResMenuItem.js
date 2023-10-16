@@ -1,8 +1,7 @@
 import React from 'react'
 import { resmenuImgUrl } from '../../util/constant'
 import { Button, Typography } from '@mui/material'
-const ResMenuItem = (props) => {
-    const { v } = props
+const ResMenuItem = ({v}) => {
     return (
         <div className='resMenuMainCon'>
             <div className='resMenuLeft'>
