@@ -12,7 +12,7 @@ const ResMenuItem = ({v}) => {
                     {v?.card?.info?.defaultPrice || v?.card?.info?.price / 100} Rs
                 </Typography>
                 <Typography variant='subtitle' sx={{ fontSize: 'small' }}>
-                    {v?.card?.info?.description}
+                    {v?.card?.info?.description || ""}
                 </Typography>
             </div>
             <div className='resMenuRight'>
