@@ -17,7 +17,6 @@ const RestaurantMenu = () => {
     useEffect(() => {
         fetchResData()
         return () => {
-            console.log("UNMOUNT")
         }
     }, [])
 
