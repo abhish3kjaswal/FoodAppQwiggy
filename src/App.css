@@ -304,6 +304,10 @@
     margin: auto;
 
     margin-top: 20px;
+    /* padding: 20px; */
+    background-color: #f9f9f9;
+    box-shadow: 3px 8px 20px -15px;
+    border-radius: 4px;
 }
 
 .foodImg-Con {
@@ -410,10 +414,14 @@
     border-radius: 10px;
 }
 
-.resFoodAddBtn{
+.resFoodAddBtn {
     width: 20px !important;
     height: 24px !important;
     position: relative !important;
     top: -17px !important;
     left: 24px !important;
+}
+
+.resInfoConTop{
+    padding: 15px;
 }

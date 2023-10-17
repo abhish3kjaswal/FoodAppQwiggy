@@ -33,7 +33,7 @@ const Body = () => {
     console.log("Res--->", json)
 
     // let resData = json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    let resData = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    let resData = json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 
     console.log("REST resData--->", resData)
 

@@ -11,6 +11,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import ErrorPage from './components/ErrorPage'
 import RestaurantMenu from './components/RestaurantMenu'
+import Cart from './components/Cart';
 
 const LazyResMenuComp = lazy(() => import('./components/RestaurantMenu'))
 
@@ -45,6 +46,10 @@ export const AppRouter = createBrowserRouter([
         element: <Suspense fallback={<h1 style={{ display: 'flex', backgroundColor: 'red', width: "100px", height: '200px', alignItems: 'center', justifyContent: 'center' }}>Loading.....</h1>}>
           <LazyResMenuComp />
         </Suspense>
+      },
+      {
+        path: '/cart',
+        element: <Cart />
       },
     ],
     errorElement: <ErrorPage />

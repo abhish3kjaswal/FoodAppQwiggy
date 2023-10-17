@@ -18,7 +18,7 @@ const Header = () => {
         {/* <div className='header'> */}
         <div className='flex justify-between shadow-md'>
             {/* <div className='logo-container'> */}
-            <div className='h-[70px] w-[150px] font-sans p-[10px] flex justify-between cursor-pointer' onClick={() => nav('/')}>
+            <div className='h-[70px] w-[140px] font-sans p-[10px] flex justify-between cursor-pointer' onClick={() => nav('/')}>
                 {/* <img className='logo' src={LOGO_URL} /> */}
                 <img className='w-[40px] h-[40px]' src={LOGO_URL} />
                 <Typography variant='h6' fontWeight={'bold'} >
