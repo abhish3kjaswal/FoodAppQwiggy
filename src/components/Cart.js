@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart } from '../features/Cart/cartSlice'
 import { resmenuImgUrl } from '../util/constant'
+import { Button } from '@mui/material'
 
 
 const Cart = () => {
@@ -85,6 +86,9 @@ const Cart = () => {
             </li>)
           : ""}
       </ul>
+      <div className='cartBottomSec'>
+        <Button variant='contained' color='success'>Place Order</Button>
+      </div>
     </div>
 
   )
