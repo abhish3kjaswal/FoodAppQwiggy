@@ -415,13 +415,64 @@
 }
 
 .resFoodAddBtn {
-    width: 20px !important;
-    height: 24px !important;
+    width: 90px ;
+    height: 30px !important;
     position: relative !important;
     top: -17px !important;
-    left: 24px !important;
+    left: 14px !important;
 }
 
 .resInfoConTop{
     padding: 15px;
+}
+
+
+.cartCon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 63px;
+    min-height: 585px;
+}
+
+.liCardsResMenu{
+    padding: 5px;
+}
+
+.cartTopSec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartLeftSec{
+
+}
+
+.cartMenuImage{
+    width: 95px;
+    height: 65px;
+}
+
+.cartRightSec{
+    background-color: #ddd6d6;
+    width: 90px;
+    display: flex;
+    justify-content: space-around;
+    height: 28px;
+    align-items: center;
+}
+
+.liCart-Btn2{
+    color: black;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+}
+
+.liCart-Btn1{
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-style: none;
 }

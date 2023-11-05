@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import * as React from 'react';
 import ResMenuItem from './ResMenu/ResMenuItem';
+import { useSelector } from 'react-redux';
 
 const RestaurantMenu = () => {
     const [resInfo, setResInfo] = useState(null)
@@ -14,13 +15,20 @@ const RestaurantMenu = () => {
 
     const { resId } = useParams()
 
+    const cartState = useSelector(state => state?.cart?.cartData)
+
+    const currentCartstate= cartState && Object.keys(cartState).length ? cartState[Object.keys(cartState)[0]]:{}
+
+    console.log("currentStateCart->",currentCartstate)
+
+    console.log("CartState->",cartState)
+
     useEffect(() => {
         fetchResData()
         return () => {
         }
     }, [])
-
-
+ 
     const fetchResData = async () => {
         const res = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.597312&lng=77.078112&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`);
         // console.log()
@@ -37,11 +45,7 @@ const RestaurantMenu = () => {
 
     const categories = itemCards && itemCards.length && itemCards.filter(ele => ele?.card?.card['@type'] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
 
-
-
     // console.log("RENDER-->", itemCards)
-    // console.log("RENDER-->", categories)
-
 
     const handleAccordionClick = (id) => {
         console.log("handleAccordionClick-->", id)
@@ -52,8 +56,6 @@ const RestaurantMenu = () => {
             setExpanded(false)
         }
     }
-
-    console.log("Expanded-->", expanded)
 
     return (
         resInfo === null ?
@@ -84,8 +86,7 @@ const RestaurantMenu = () => {
                                                         {val?.card?.card?.itemCards ?
                                                             val?.card?.card?.itemCards.map((v, i) => {
                                                                 return <li key={i} style={{ borderBottom: "2px solid #787878", padding: '20px', minHeight: '150px' }}>
-                                                                    <ResMenuItem v={v} />
-
+                                                                    <ResMenuItem item={v} resName={name}/>
                                                                 </li>
                                                             })
                                                             : ''}

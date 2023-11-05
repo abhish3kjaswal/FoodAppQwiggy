@@ -13,13 +13,18 @@ import ErrorPage from './components/ErrorPage'
 import RestaurantMenu from './components/RestaurantMenu'
 import Cart from './components/Cart';
 
+import { Provider } from 'react-redux'
+import store from './app/store';
+
 const LazyResMenuComp = lazy(() => import('./components/RestaurantMenu'))
 
 function App() {
   return <div className='app'>
+    <Provider store={store}>
     <Header />
     {/* outlet will be replaced with the specific element based on the path */}
     <Outlet />
+    </Provider>
   </div>
 }
 

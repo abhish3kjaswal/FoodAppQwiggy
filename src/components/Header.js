@@ -2,17 +2,16 @@ import react, { useState } from 'react'
 import { LOGO_URL } from '../util/constant';
 import { Link, Typography } from '@mui/material';
 import useOnlineStatus from '../util/useOnlineStatus';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
     const [mobLogo, setMobLogo] = useState(false)
-    const nav = useNavigate('/')
+    const nav = useNavigate()
 
     const logoClick = (e) => {
         e && e.preventDefault();
         setMobLogo(!mobLogo)
     }
-
 
     return <div>
         {/* <div className='header'> */}
@@ -65,7 +64,7 @@ const Header = () => {
                             Contact
                         </Link></li>
                     <li className='m-[10px] p-[10px] cursor-pointer'>
-                        <Link sx={{
+                        {/* <Link sx={{
                             '&:hover': {
                                 color: 'blue'
                             },
@@ -74,7 +73,9 @@ const Header = () => {
                         }}
                             href='/cart'>
                             Cart
-                        </Link></li>
+                        </Link> */}
+                        <NavLink to='/cart'>Cart</NavLink>
+                        </li>
                 </ul>
 
             </div>
