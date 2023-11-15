@@ -4,7 +4,12 @@ import RestaurantCard from "./RestaurantCard";
 import ShimmerUi from "./ShimmerUi";
 import useOnlineStatus from "../util/useOnlineStatus";
 import ResCardHOC from "../HOC/ResCardHOC";
+import { Box, Button, Input } from "@mui/material";
 // import { Button } from "@mui/material";
+
+
+let ti;
+
 const Body = () => {
 
   const [foodList, setFoodList] = useState([])
@@ -12,9 +17,24 @@ const Body = () => {
 
   const [defFoodList, setDefFoodList] = useState([])
 
+  useEffect(() => {
+    getSwiggyData()
+  }, [])
+
+  useEffect(() => {
+    //debounce method
+
+    if(ti){
+      clearTimeout(ti)
+    }
+    ti = setTimeout(() => {
+      handleSearch()
+    }, 2000)
+
+  }, [searchTxt])
+
   const topRated = (e) => {
     e && e.preventDefault();
-    console.log("topRated->", foodList)
     let ar = foodList.filter((el, i) => el.avgRating > 4)
     setFoodList(ar)
 
@@ -28,31 +48,20 @@ const Body = () => {
 
   const getSwiggyData = async () => {
     const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.597312&lng=77.078112&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
-    const json = await data.json()
-
-    console.log("Res--->", json)
+    const jsonData = await data.json()
 
     // let resData = json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    let resData = json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-
-    console.log("REST resData--->", resData)
+    let resData = jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 
     const ar = resData && Array.isArray(resData) && resData.map(ele => ele.info)
-
-    console.log("REST ar--->", ar)
 
     setFoodList(ar)
     setDefFoodList(ar)
   }
 
-  useEffect(() => {
-    getSwiggyData()
-  }, [])
+ 
 
-  console.log("Render-->", foodList)
-
-  const handleSearch = (e) => {
-    e && e.preventDefault();  
+  const handleSearch = () => {
     console.log("SEARCH-->", searchTxt)
     if (searchTxt) {
       let ar = defFoodList.filter((el, i) => {
@@ -66,17 +75,23 @@ const Body = () => {
   }
 
   const online = useOnlineStatus()
-  console.log("status->", online)
 
-
-  if(online===false){
+  if (online === false) {
     return <><h1>Please connect to internet</h1></>
   }
 
   const EnhancedComp = ResCardHOC(RestaurantCard)
 
+  const handleSearchTab = (e) => {
+    const { value } = e.target;
+    setSearchTxt(value)
+  }
 
   return <div className='bodyCon'>
+    {/* <>
+    <Button variant="contained" onClick={()=>setCo(co+1)}>+</Button>
+  <label>{co}</label>
+    </> */}
     <div className="filter">
       {/* <div className='searchBar'>
         <input type='text' placeholder='Search' name='searchTxt' value={searchTxt}
@@ -92,12 +107,20 @@ const Body = () => {
       <button className="filter_Btn" onClick={topRated}>Top Rated
         <a href="#" className="cancelTopRated" onClick={cancelTopRated}>X</a>
       </button>
-      {/* <Button variant="contained" >Contained</Button> */}
+      <Box sx={{
+        marginLeft: '30px',
+      }}>
+        <Input type='text' placeholder='Search' name='searchTxt' value={searchTxt}
+          onChange={(e) => handleSearchTab(e)}
+          // sx={{ border: 'none', outline: 'none' }} 
+          />
+        <a href="#" className="clearSearch" onClick={() => { setFoodList(defFoodList); setSearchTxt("") }}>X</a>
+      </Box>
     </div>
     {foodList && foodList.length == 0 ? <ShimmerUi />
       : <div className='res-container'>
         {foodList && foodList.length ? foodList.map((resObj, i) => (
-          i % 2 == 0 ? <RestaurantCard key={i} resData={resObj} /> : <EnhancedComp  key={i} resData={resObj}/>
+          i % 2 == 0 ? <RestaurantCard key={i} resData={resObj} /> : <EnhancedComp key={i} resData={resObj} />
         )) : ''}
       </div>}
   </div>

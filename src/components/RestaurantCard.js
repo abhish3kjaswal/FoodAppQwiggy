@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import StarIcon from '@mui/icons-material/Star'
 
 const RestaurantCard = (props) => {
-  const { resData: foodData } = props
+  const { resData: foodData ,ab} = props
+
   const navigate = useNavigate()
 
   return <div className="cardsOuter">

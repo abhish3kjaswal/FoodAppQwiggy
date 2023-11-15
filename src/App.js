@@ -21,9 +21,8 @@ const LazyResMenuComp = lazy(() => import('./components/RestaurantMenu'))
 function App() {
   return <div className='app'>
     <Provider store={store}>
-    <Header />
-    {/* outlet will be replaced with the specific element based on the path */}
-    <Outlet />
+      {/* outlet will be replaced with the specific element based on the path */}
+      <Outlet />
     </Provider>
   </div>
 }
@@ -32,15 +31,23 @@ function App() {
 export const AppRouter = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <>
+    <Header />
+    <App />
+    </>
+    ,
     children: [
       {
         path: '/',
-        element: <Body />
+        element: <>
+          <Body />
+        </>
       },
       {
         path: '/about',
-        element: <About />
+        element: <>
+        <About />
+        </>
       },
       {
         path: '/contact',

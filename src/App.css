@@ -476,3 +476,24 @@
     cursor: pointer;
     border-style: none;
 }
+
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+    width: 50% !important;
+}
+
+.MuiTypography-root.MuiTypography-h6.MuiDialogTitle-root.css-bdhsul-MuiTypography-root-MuiDialogTitle-root{
+    text-align: center !important;
+}
+
+.MuiDialogContent-root.css-ypiqx9-MuiDialogContent-root{
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeXl.css-821wyw-MuiSvgIcon-root{
+    height: 80px !important;
+    width: 80px !important;
+    color: green !important;
+}
+

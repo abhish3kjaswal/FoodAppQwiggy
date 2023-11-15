@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart } from '../features/Cart/cartSlice'
+import { addToCart, placeOrder, removeFromCart,resetCart } from '../features/Cart/cartSlice'
 import { resmenuImgUrl } from '../util/constant'
 import { Button } from '@mui/material'
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
 const Cart = () => {
@@ -12,6 +21,9 @@ const Cart = () => {
 
 
   const [cartAr, setCartAr] = useState([])
+
+  // const [openModal, setOpenModal] = useState(false)
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const ab = Object.keys(state).length ? Object.keys(state[Object.keys(state)]).map(ele => {
@@ -42,7 +54,23 @@ const Cart = () => {
     }
   }
 
-  return (cartAr && cartAr.length == 0 ? <>
+  const handlePlaceOrder = () => {
+    console.log("handle Place Order")
+    dispatch(placeOrder(cartAr))
+    handleClickOpen()
+  }
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    dispatch(resetCart());
+
+    setOpen(false);
+  };
+
+  return <>{cartAr && cartAr.length == 0 ? <>
     <div className='cartCon' >
       No Items in the Cart
     </div>
@@ -87,11 +115,34 @@ const Cart = () => {
           : ""}
       </ul>
       <div className='cartBottomSec'>
-        <Button variant='contained' color='success'>Place Order</Button>
+        <Button variant='contained' color='success' onClick={handlePlaceOrder}>Place Order</Button>
       </div>
-    </div>
+    </div>}
 
-  )
+    {open && <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">
+        {"Order Placed Successfully"}
+      </DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          {/* Let Google help apps determine location. This means sending anonymous
+            location data to Google, even when no apps are running. */}
+            <CheckCircleIcon fontSize='xl'/>
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} autoFocus>Close</Button>
+        {/* <Button onClick={handleClose} autoFocus>
+            Agree
+          </Button> */}
+      </DialogActions>
+    </Dialog>}
+  </>
 }
 
 export default Cart
