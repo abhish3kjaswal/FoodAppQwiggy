@@ -1,3 +1,9 @@
+<img width="1470" alt="Screenshot 2023-11-26 at 7 26 45 PM" src="https://github.com/abhish3kjaswal/FoodAppQwiggy/assets/40520789/f6aa54eb-fbb7-4c52-9e2c-5f6427978d8c">
+<img width="1470" alt="Screenshot 2023-11-26 at 7 27 58 PM" src="https://github.com/abhish3kjaswal/FoodAppQwiggy/assets/40520789/ad6f756f-ee0f-4eb8-894f-07c253266206">
+<img width="1470" alt="Screenshot 2023-11-26 at 7 27 43 PM" src="https://github.com/abhish3kjaswal/FoodAppQwiggy/assets/40520789/4b453676-6b25-4d26-b129-2201e73fa600">
+<img width="1470" alt="Screenshot 2023-11-26 at 7 27 26 PM" src="https://github.com/abhish3kjaswal/FoodAppQwiggy/assets/40520789/06574fa2-33c7-4e57-93f9-7a9b74104934">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
