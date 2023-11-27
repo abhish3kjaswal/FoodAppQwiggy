@@ -33,7 +33,6 @@ const Cart = () => {
     setCartAr(ab)
   }, [state])
 
-  console.log("cartAr-->", cartAr)
 
   const addCart = (e, ele) => {
     e && e.preventDefault()
@@ -55,7 +54,6 @@ const Cart = () => {
   }
 
   const handlePlaceOrder = () => {
-    console.log("handle Place Order")
     dispatch(placeOrder(cartAr))
     handleClickOpen()
   }

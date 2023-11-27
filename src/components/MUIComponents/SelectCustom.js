@@ -6,10 +6,7 @@ const SelectCustom = () => {
   const [sval, setSVal] = useState([])
 
   const handleChange = e => {
-    let { name, value } = e.target
-
-    console.log("handle change-name>", e)
-    console.log("handle change-value>", value)
+    let { value } = e.target
     setSVal(value)
   }
   return (

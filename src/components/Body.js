@@ -8,7 +8,7 @@ import { Box, Button, Input } from "@mui/material";
 // import { Button } from "@mui/material";
 
 
-let ti;
+// let ti;
 
 const Body = () => {
 
@@ -24,12 +24,12 @@ const Body = () => {
   useEffect(() => {
     //debounce method
 
-    if(ti){
-      clearTimeout(ti)
-    }
-    ti = setTimeout(() => {
+   
+   let ti = setTimeout(() => {
       handleSearch()
     }, 2000)
+
+    return()=>{clearTimeout(ti)}
 
   }, [searchTxt])
 
@@ -47,7 +47,7 @@ const Body = () => {
   }
 
   const getSwiggyData = async () => {
-    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.597312&lng=77.078112&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
+    const data = await fetch('https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.597312&lng=77.078112&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
     const jsonData = await data.json()
 
     // let resData = json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -62,7 +62,6 @@ const Body = () => {
  
 
   const handleSearch = () => {
-    console.log("SEARCH-->", searchTxt)
     if (searchTxt) {
       let ar = defFoodList.filter((el, i) => {
         return el.name.toLowerCase().includes(searchTxt.toLowerCase())

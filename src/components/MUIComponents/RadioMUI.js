@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 
 const RadioMUI = () => {
     const [value, setValue] = useState('')
-    console.log("VALie-->", value)
     return (
         <Box width={'250px'} sx={{margin:'30px',border:'1px solid green',padding:'10px'}}>
             <FormControl error={false}>

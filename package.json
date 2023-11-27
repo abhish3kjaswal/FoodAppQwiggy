@@ -1,4 +1,5 @@
 {
+  "proxy":"https://www.swiggy.com",
   "name": "qwiggy-order-app",
   "version": "0.1.0",
   "private": true,

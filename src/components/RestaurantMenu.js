@@ -19,10 +19,6 @@ const RestaurantMenu = () => {
 
     const currentCartstate= cartState && Object.keys(cartState).length ? cartState[Object.keys(cartState)[0]]:{}
 
-    console.log("currentStateCart->",currentCartstate)
-
-    console.log("CartState->",cartState)
-
     useEffect(() => {
         fetchResData()
         return () => {
@@ -30,10 +26,8 @@ const RestaurantMenu = () => {
     }, [])
  
     const fetchResData = async () => {
-        const res = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.597312&lng=77.078112&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`);
-        // console.log()
+        const res = await fetch(`https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.597312&lng=77.078112&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`);
         const json = await res.json()
-        console.log(json)
         setResInfo(json.data)
     }
 
@@ -45,10 +39,7 @@ const RestaurantMenu = () => {
 
     const categories = itemCards && itemCards.length && itemCards.filter(ele => ele?.card?.card['@type'] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
 
-    // console.log("RENDER-->", itemCards)
-
     const handleAccordionClick = (id) => {
-        console.log("handleAccordionClick-->", id)
         if(id!==expanded){
             setExpanded(id)
         }

@@ -5,7 +5,6 @@ const Contact = () => {
 
  useEffect(() => {
 
-  
   return () => {
     
   };
